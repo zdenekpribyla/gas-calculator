@@ -73,13 +73,13 @@ var getValues = function () {
 
 
 
-var calculate = function(parametryJizdy) {
+var calculate = function(inputData) {
     console.log('moje - calculate()')
-    // console.log('Na vylet jsme vyrazili ' + parametryJizdy.osoby + ' kluci.' );
-    // console.log('Ujeli jsme ' + parametryJizdy.ujeteKm + ' jen tam.');
-    // console.log('Se zpáteční cestou celkem ' + parametryJizdy.ujeteKm * 2 + ' km.');
-    //console.log('Celkem jsme zaplatili ' + ((parametryJizdy.ujeteKm / 100) * parametryJizdy.cena * parametryJizdy.prumerna) + ' kc');
-    var result = ((parametryJizdy.totalDistance / 100) * parametryJizdy.gasPrice * parametryJizdy.averageConsumption);
+    // console.log('Na vylet jsme vyrazili ' + inputData.osoby + ' kluci.' );
+    // console.log('Ujeli jsme ' + inputData.ujeteKm + ' jen tam.');
+    // console.log('Se zpáteční cestou celkem ' + inputData.ujeteKm * 2 + ' km.');
+    //console.log('Celkem jsme zaplatili ' + ((inputData.ujeteKm / 100) * inputData.cena * inputData.prumerna) + ' kc');
+    var result = ((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption);
     console.log(result)
     return result;
 };
