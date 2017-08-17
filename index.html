@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Best Gas Calculator Ever</title>
+</head>
+<body>
+<div class="calculator-name">The Best Gas Calculator Ever</div>
+<div>
+    <div class="num-pass-name">Number of passengers</div>
+    <input id="num-pass-input" type="text" value="3">
+</div>
+
+<div>
+    <div class="gas-price-name">Gas price (per liter)</div>
+    <input id="gas-price-input" type="text" value="30">
+</div>
+
+<div>
+    <div class="average-consumption-name">Average gas consumption (per 100 km)</div>
+    <input id="average-consumption-input" type="text" value="6">
+</div>
+
+<div>
+    <div class="total-distance-name">Total trip distance</div>
+    <input id="total-distance-input" type="text" value="2000">
+</div>
+
+<div>
+    <input id="way-back-input" type="checkbox">
+    <span class="way-back-name">Way back</span>
+</div>
+
+<div>
+    <div class="results-button">
+        <button onclick="calculate(getValues())">Calculate</button>
+    </div>
+</div>
+
+
+<script src="app.js"></script>
+<link rel="stylesheet" href="styles.css" class="css">
+
+</body>
+</html>
