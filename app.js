@@ -34,10 +34,10 @@
 var getValues = function () {
     console.log('moje - getValues()');
     return {
-        numberOfPassengers: Number(document.getElementById('num-pass-input').value),
+        numberOfPassangers: Number(document.getElementById('num-pass-input').value),
         gasPrice: document.getElementById('gas-price-input').value,
         averageConsumption: document.getElementById('average-consumption-input').value,
-        totalDistance: document.getElementById('average-consumption-input').value
+        totalDistance: document.getElementById('total-distance-input').value
     }
 };
 
@@ -61,7 +61,7 @@ var getValues = function () {
 
 
 
-
+// 1. varianta
 // var calculate = function (osoby, cena, prumerna, ujeteKm) {
 //     console.log('Na vylet jsme vyrazili ' + osoby + ' kluci.' )
 //     console.log('Ujeli jsme ' + ujeteKm + ' jen tam.');
@@ -71,26 +71,53 @@ var getValues = function () {
 //
 // calculate(3, 30, 10, 2000)
 
-
+// 2. varianta
 
 var calculate = function(inputData) {
-    console.log('moje - calculate()')
-    // console.log('Na vylet jsme vyrazili ' + inputData.osoby + ' kluci.' );
-    // console.log('Ujeli jsme ' + inputData.ujeteKm + ' jen tam.');
-    // console.log('Se zpáteční cestou celkem ' + inputData.ujeteKm * 2 + ' km.');
-    //console.log('Celkem jsme zaplatili ' + ((inputData.ujeteKm / 100) * inputData.cena * inputData.prumerna) + ' kc');
-    var result = ((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption);
-    console.log(result)
-    return result;
+       console.log('moje - calculate()');
+    var result = Math.floor(((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption) / inputData.numberOfPassangers);
+    console.log(result);
+    var wayBack = function () {
+        if (document.getElementById('way-back-input').checked) {
+           return result * 2
+        }
+        else {
+           return result
+        }
+
+    }
+    document.getElementById('display-result-value').innerHTML = 'Everybody will pay ' + wayBack() + ' CZK.';
+
 };
 
+// document.getElementById('way-back-input').onclick = function () {
+//     console.log()
+//     if (this.checked) {
+//         return result * 2;
+//     }
+//     else {
+//         return result
+//     }
+//
+// };
 
-var parametryJizdy = {
-    osoby: 3,
-    cena: 30,
-    prumerna: 10,
-    ujeteKm: 2000
-}
+
+
+// var check = function () {
+//     document.getElementById(way-back-input).checked = true
+// };
+//
+// var uncheck = function () {
+//     document.getElementById(way-back-input).checked = false
+// };
+
+
+// var parametryJizdy = {
+//     osoby: 2,
+//     cena: 30,
+//     prumerna: 10,
+//     ujeteKm: 1000
+// }
 
 //calculate(getValues())
 

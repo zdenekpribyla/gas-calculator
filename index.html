@@ -5,10 +5,11 @@
     <title>The Best Gas Calculator Ever</title>
 </head>
 <body>
+<div class="calc-body">
 <div class="calculator-name">The Best Gas Calculator Ever</div>
 <div>
     <div class="num-pass-name">Number of passengers</div>
-    <input id="num-pass-input" type="text" value="3">
+    <input id="num-pass-input" type="text" value="2">
 </div>
 
 <div>
@@ -18,12 +19,12 @@
 
 <div>
     <div class="average-consumption-name">Average gas consumption (per 100 km)</div>
-    <input id="average-consumption-input" type="text" value="6">
+    <input id="average-consumption-input" type="text" value="10">
 </div>
 
 <div>
     <div class="total-distance-name">Total trip distance</div>
-    <input id="total-distance-input" type="text" value="2000">
+    <input id="total-distance-input" type="text" value="999">
 </div>
 
 <div>
@@ -35,6 +36,13 @@
     <div class="results-button">
         <button onclick="calculate(getValues())">Calculate</button>
     </div>
+</div>
+
+<div>
+    <div class="display-result">
+         <span id="display-result-value"></span>
+    </div>
+</div>
 </div>
 
 
