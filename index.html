@@ -5,6 +5,10 @@
     <title>The Best Gas Calculator Ever</title>
 </head>
 <body>
+
+
+
+
 <div class="calc-body">
 <div class="calculator-name">The Best Gas Calculator Ever</div>
 <div class="inputs-shed">
@@ -13,17 +17,17 @@
 </div>
 
 <div class="inputs-shed">
-    <div class="inputs-name">Gas price (per liter)</div>
+    <div class="inputs-name">Gas price (CZK per liter)</div>
     <input id="gas-price-input" type="text" value="" placeholder="e.g. 30.5">
 </div>
 
 <div class="inputs-shed">
-    <div class="inputs-name">Average gas consumption (per 100 km)</div>
+    <div class="inputs-name">Average gas consumption (liter per 100 km)</div>
     <input id="average-consumption-input" type="text" value="" placeholder="e.g. 9.2">
 </div>
 
 <div class="inputs-shed">
-    <div class="inputs-name">Trip distance</div>
+    <div class="inputs-name">Trip distance (km)</div>
     <input id="total-distance-input" type="text" value="" placeholder="e.g. 1385.78">
 </div>
 
@@ -34,7 +38,7 @@
 
 <div>
     <div class="results-button">
-        <button class="button-look" onclick="calculate(getValues())">CALCULATE</button>
+        <input type="submit" name="clickbutt" id="button-click" class="button-look" onclick="calculate(getValues())" value="Calculate">
     </div>
 </div>
 
