@@ -73,9 +73,14 @@ var getValues = function () {
 
 // 2. varianta
 
+
+
+
+
+
 var calculate = function(inputData) {
-       console.log('moje - calculate()');
-    var result = Math.floor(((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption) / inputData.numberOfPassangers);
+     console.log('moje - calculate()');
+    var result = (((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption) / inputData.numberOfPassangers);
     console.log(result);
     var wayBack = function () {
         if (document.getElementById('way-back-input').checked) {
@@ -86,9 +91,19 @@ var calculate = function(inputData) {
         }
 
     }
-    document.getElementById('display-result-value').innerHTML = 'Everybody will pay ' + wayBack() + ' CZK.';
+    { if (wayBack() < 1) {
+        document.getElementById('display-result-value').innerHTML = 'Everybody will pay less than 1 CZK.'
+    }
+    else {
+        document.getElementById('display-result-value').innerHTML = 'Everybody will pay ' + Math.floor(wayBack()) + ' CZK.'
+    }};
+
+
+   // document.getElementById('display-result-value').innerHTML = 'Everybody will pay ' + Math.floor(wayBack()) + ' CZK.'
 
 };
+
+
 
 // document.getElementById('way-back-input').onclick = function () {
 //     console.log()
