@@ -1,10 +1,10 @@
 var getValues = function () {
     console.log('moje - getValues()');
     return {
-        numberOfPassangers: document.getElementById('num-pass-input').value,
-        gasPrice: document.getElementById('gas-price-input').value,
-        averageConsumption: document.getElementById('average-consumption-input').value,
-        totalDistance: document.getElementById('total-distance-input').value
+        numberOfPassangers: Number(document.getElementById('num-pass-input').value),
+        gasPrice: Number(document.getElementById('gas-price-input').value),
+        averageConsumption: Number(document.getElementById('average-consumption-input').value),
+        totalDistance: Number(document.getElementById('total-distance-input').value)
     }
 };
 
