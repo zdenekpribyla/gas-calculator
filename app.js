@@ -1,5 +1,5 @@
 var getValues = function () {
-    console.log('moje - getValues()');
+    // console.log('moje - getValues()');
     return {
         numberOfPassangers: Number(document.getElementById('num-pass-input').value),
         gasPrice: Number(document.getElementById('gas-price-input').value),
@@ -8,9 +8,31 @@ var getValues = function () {
     }
 };
 
+var validate = function (inputData) {
+
+    console.log(inputData);
+
+    if (inputData.numberOfPassangers === 0 || inputData.) {
+        console.log('numberOfPassangers je 0');
+
+       // document.getElementById('display-result-value').innerHTML = 'Put number higher than 0'
+    }
+
+    else if (inputData.numberOfPassangers < 0 ) {
+        console.log('numberOfPassangers je zaporne');
+       // document.getElementById('display-result-value').innerHTML = 'Put number higher than 0'
+    }
+
+    else {
+        console.log('numberOfPassangers je OK');
+
+        calculate(getValues())
+    }
+};
+
 
 var calculate = function (inputData) {
-    console.log('moje - calculate()');
+    //console.log('moje - calculate()');
     var result = (((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption)
         / inputData.numberOfPassangers);
     console.log(result);
@@ -25,28 +47,29 @@ var calculate = function (inputData) {
 
     document.getElementById('display-result-value').innerHTML = 'Everybody will pay ' + Math.round(wayBack() * 100) / 100 + ' CZK.'
 
+
 };
 
 //spusteni calculate pres click na button
 var button = document.getElementById('button-click');
-console.log(button);
+//console.log(button);
 
 button.addEventListener('click', function () {
-    console.log('button-clicked');
+ //   console.log('button-clicked');
     calculate(getValues())
 });
 
 //loop for inputs class instead of id
 
 var inputsAll = document.getElementsByClassName('inputs-field');  //create a field
-console.log('tady je inputs all', inputsAll);
+//console.log('tady je inputs all', inputsAll);
 
 for (var index = 0; index < inputsAll.length; ++index) {
     // console.log('zavolal jsem for loop')
 
     // console.log('index je ted:', index)
 
-    var singleInputElement = inputsAll[index]
+    var singleInputElement = inputsAll[index];
     // console.log('pres index jsem si vytahl z pole singleInputElement ktery je: ', singleInputElement);
 
     singleInputElement.addEventListener('keypress', function (event) {
@@ -58,8 +81,6 @@ for (var index = 0; index < inputsAll.length; ++index) {
     });
 
 }
-
-
 
 
 //wayBack input
