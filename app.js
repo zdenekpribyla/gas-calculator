@@ -36,47 +36,30 @@ button.addEventListener('click', function () {
     calculate(getValues())
 });
 
+//loop for inputs class instead of id
 
+var inputsAll = document.getElementsByClassName('inputs-field');  //create a field
+console.log('tady je inputs all', inputsAll);
 
-//passenger input
-var passengerElement = document.getElementById('num-pass-input');
-console.log('passanger element: ', passengerElement);
+for (var index = 0; index < inputsAll.length; ++index) {
+    // console.log('zavolal jsem for loop')
 
+    // console.log('index je ted:', index)
 
-passengerElement.addEventListener('keypress', function (event) {
-    var key = event.keyCode;
-    if (key === 13) {
+    var singleInputElement = inputsAll[index]
+    // console.log('pres index jsem si vytahl z pole singleInputElement ktery je: ', singleInputElement);
+
+    singleInputElement.addEventListener('keypress', function (event) {
+        var key = event.keyCode;
+        if (key === 13) {
             calculate(getValues())
         }
-    console.log('event: ', event);
-});
+        // console.log('event: ', event);
+    });
 
-//gas input
-var gasElement = document.getElementById('gas-price-input');
-gasElement.addEventListener('keypress', function (event) {
-    var key = event.keyCode;
-    if (key === 13) {
-        calculate(getValues())
-    }
-});
+}
 
-//consumption input
-var consumptionElement = document.getElementById('average-consumption-input');
-consumptionElement.addEventListener('keypress', function (event) {
-    var key = event.keyCode;
-    if (key === 13) {
-        calculate(getValues())
-    }
-});
 
-//distance input
-var distanceElement = document.getElementById('total-distance-input');
-distanceElement.addEventListener('keypress', function (event) {
-    var key = event.keyCode;
-    if (key === 13) {
-        calculate(getValues())
-    }
-});
 
 
 //wayBack input
