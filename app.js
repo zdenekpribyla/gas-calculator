@@ -1,7 +1,7 @@
 var getValues = function () {
     console.log('moje - getValues()');
     return {
-        numberOfPassangers: Number(document.getElementById('num-pass-input').value),
+        numberOfPassangers: document.getElementById('num-pass-input').value,
         gasPrice: document.getElementById('gas-price-input').value,
         averageConsumption: document.getElementById('average-consumption-input').value,
         totalDistance: document.getElementById('total-distance-input').value
@@ -11,7 +11,8 @@ var getValues = function () {
 
 var calculate = function (inputData) {
     console.log('moje - calculate()');
-    var result = (((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption) / inputData.numberOfPassangers);
+    var result = (((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption)
+        / inputData.numberOfPassangers);
     console.log(result);
     var wayBack = function () {
         if (document.getElementById('way-back-input').checked) {
@@ -22,36 +23,65 @@ var calculate = function (inputData) {
         }
     };
 
-    if (wayBack() < 1) {
-        document.getElementById('display-result-value').innerHTML = 'Everybody will pay less than 1 CZK.'
-    }
-    else {
-        document.getElementById('display-result-value').innerHTML = 'Everybody will pay ' + Math.floor(wayBack()) + ' CZK.'
-    }
-
+    document.getElementById('display-result-value').innerHTML = 'Everybody will pay ' + Math.round(wayBack() * 100) / 100 + ' CZK.'
 
 };
 
+//spusteni calculate pres click na button
 var button = document.getElementById('button-click');
 console.log(button);
 
 button.addEventListener('click', function () {
     console.log('button-clicked');
     calculate(getValues())
-    // document.getElementById('display-result-value').innerHTML = calculate(getValues());
 });
 
 
-// Pro enter pouzit toto: Pavlova verze
-var passangerElement = document.getElementById('num-pass-input');
-console.log('passanger element: ', passangerElement);
 
-passangerElement.addEventListener('keypress', function (event) {
+//passenger input
+var passengerElement = document.getElementById('num-pass-input');
+console.log('passanger element: ', passengerElement);
+
+
+passengerElement.addEventListener('keypress', function (event) {
     var key = event.keyCode;
     if (key === 13) {
-        console.log('put enter');
+            calculate(getValues())
+        }
+    console.log('event: ', event);
+});
+
+//gas input
+var gasElement = document.getElementById('gas-price-input');
+gasElement.addEventListener('keypress', function (event) {
+    var key = event.keyCode;
+    if (key === 13) {
         calculate(getValues())
     }
-    console.log('event: ', event)
+});
+
+//consumption input
+var consumptionElement = document.getElementById('average-consumption-input');
+consumptionElement.addEventListener('keypress', function (event) {
+    var key = event.keyCode;
+    if (key === 13) {
+        calculate(getValues())
+    }
+});
+
+//distance input
+var distanceElement = document.getElementById('total-distance-input');
+distanceElement.addEventListener('keypress', function (event) {
+    var key = event.keyCode;
+    if (key === 13) {
+        calculate(getValues())
+    }
+});
+
+
+//wayBack input
+var wayBackElement = document.getElementById('way-back-input');
+wayBackElement.addEventListener('click', function (event) {
+    calculate(getValues())
 });
 
