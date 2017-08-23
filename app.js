@@ -10,25 +10,17 @@ var getValues = function () {
 
 var validate = function (inputData) {
 
-    console.log(inputData);
+  if (inputData.numberOfPassangers <= 0 || inputData.gasPrice <= 0 || inputData.averageConsumption <= 0 || inputData.totalDistance <= 0) {
+    console.log('validate: nekde je 0')
+    console.log('validate: nekde je zaporne cislo');
+    return false
+  }
 
-    if (inputData.numberOfPassangers === 0 || inputData.) {
-        console.log('numberOfPassangers je 0');
-
-       // document.getElementById('display-result-value').innerHTML = 'Put number higher than 0'
-    }
-
-    else if (inputData.numberOfPassangers < 0 ) {
-        console.log('numberOfPassangers je zaporne');
-       // document.getElementById('display-result-value').innerHTML = 'Put number higher than 0'
-    }
-
-    else {
-        console.log('numberOfPassangers je OK');
-
-        calculate(getValues())
-    }
-};
+  else {
+    console.log('validate: vse OK')
+    return true
+  }
+}
 
 
 var calculate = function (inputData) {
@@ -55,8 +47,7 @@ var button = document.getElementById('button-click');
 //console.log(button);
 
 button.addEventListener('click', function () {
- //   console.log('button-clicked');
-    calculate(getValues())
+  run()
 });
 
 //loop for inputs class instead of id
@@ -75,11 +66,21 @@ for (var index = 0; index < inputsAll.length; ++index) {
     singleInputElement.addEventListener('keypress', function (event) {
         var key = event.keyCode;
         if (key === 13) {
-            calculate(getValues())
+          run()
         }
         // console.log('event: ', event);
     });
 
+}
+
+var run = function () {
+  var inputData = getValues()
+
+  if(validate(inputData)) {
+    calculate(inputData)
+  } else {
+    alert('There is some input data error')
+  }
 }
 
 
