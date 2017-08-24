@@ -1,14 +1,26 @@
+//select html elements
+var passengersElement = document.getElementById('num-pass-input');
+var gasPriceElement = document.getElementById('gas-price-input');
+var consumptionElement = document.getElementById('average-consumption-input');
+var distanceElement = document.getElementById('total-distance-input');
+var wayBackElement = document.getElementById('way-back-input');
+var resultElement = document.getElementById('display-result-value');
+var buttonElement = document.getElementById('button-click');
+var inputsAllElement = document.getElementsByClassName('inputs-field');
+
+//take value and accept only numbers
 var getValues = function () {
     console.log('getValues()');
 
     return {
-        numberOfPassangers: Number(document.getElementById('num-pass-input').value),
-        gasPrice: Number(document.getElementById('gas-price-input').value),
-        averageConsumption: Number(document.getElementById('average-consumption-input').value),
-        totalDistance: Number(document.getElementById('total-distance-input').value)
+        numberOfPassangers: Number(passengersElement.value),
+        gasPrice: Number(gasPriceElement.value),
+        averageConsumption: Number(consumptionElement.value),
+        totalDistance: Number(distanceElement.value)
     }
 };
 
+//validation rejects zero and negative inputs value
 var validate = function (inputData) {
     console.log('validate()');
 
@@ -18,8 +30,6 @@ var validate = function (inputData) {
         || inputData.totalDistance <= 0) {
         console.log('cislo je nula nebo nizsi');
         return false
-
-        // document.getElementById('display-result-value').innerHTML = 'Put number higher than 0'
     }
 
     else {
@@ -28,7 +38,7 @@ var validate = function (inputData) {
     }
 };
 
-
+//calculation formula, wayBack condition and display result
 var calculate = function (inputData) {
     console.log('calculate()');
 
@@ -36,16 +46,18 @@ var calculate = function (inputData) {
         / inputData.numberOfPassangers);
     console.log(result);
     var wayBack = function () {
-        if (document.getElementById('way-back-input').checked) {
+        if (wayBackElement.checked) {
             return result * 2
         }
         else {
             return result
         }
     };
-    document.getElementById('display-result-value').innerHTML = 'Everybody will pay ' + Math.round(wayBack() * 100) / 100 + ' CZK.'
+    resultElement.innerHTML = 'Everybody will pay ' + Math.round(wayBack() * 100) / 100 + ' CZK.'
 };
 
+
+//finalRun decides between calculate (true) or alert (false)
 var finalRun = function () {
     console.log('finalRun()');
 
@@ -62,11 +74,8 @@ var finalRun = function () {
     }
 };
 
-//spusteni calculate pres click na button
-var button = document.getElementById('button-click');
-//console.log(button);
-
-button.addEventListener('click', function () {
+//run finalRun through click on button input
+buttonElement.addEventListener('click', function () {
     console.log('button click');
     //   console.log('button-clicked');
     finalRun()
@@ -74,16 +83,10 @@ button.addEventListener('click', function () {
 
 
 //loop for inputs class instead of id
-
-var inputsAll = document.getElementsByClassName('inputs-field');  //create a field
-//console.log('tady je inputs all', inputsAll);
-
-for (var index = 0; index < inputsAll.length; ++index) {
+//pocitadlo
+for (var index = 0; index < inputsAllElement.length; ++index) {
     // console.log('zavolal jsem for loop')
-
-    // console.log('index je ted:', index)
-
-    var singleInputElement = inputsAll[index];
+    var singleInputElement = inputsAllElement[index];
     // console.log('pres index jsem si vytahl z pole singleInputElement ktery je: ', singleInputElement);
 
     singleInputElement.addEventListener('keypress', function (event) {
@@ -95,13 +98,11 @@ for (var index = 0; index < inputsAll.length; ++index) {
         }
         // console.log('event: ', event);
     });
-
 }
 
 
-//wayBack input
-var wayBackElement = document.getElementById('way-back-input');
-wayBackElement.addEventListener('click', function (event) {
+//wayBack input on click
+wayBackElement.addEventListener('click', function () {
     console.log('wayBackElement click');
 
     calculate(getValues())
