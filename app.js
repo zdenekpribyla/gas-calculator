@@ -105,6 +105,6 @@ for (var index = 0; index < inputsAllElement.length; ++index) {
 wayBackElement.addEventListener('click', function () {
     console.log('wayBackElement click');
 
-    calculate(getValues())
+    finalRun()
 });
 
