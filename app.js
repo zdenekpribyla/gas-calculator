@@ -12,21 +12,17 @@ var validate = function (inputData) {
 
     console.log(inputData);
 
-    if (inputData.numberOfPassangers === 0 || inputData.) {
+    if (inputData.numberOfPassangers <= 0 || inputData.gasPrice <= 0 || inputData.averageConsumption <= 0 || inputData.gasPrice <= 0) {
         console.log('numberOfPassangers je 0');
+        return false
 
        // document.getElementById('display-result-value').innerHTML = 'Put number higher than 0'
     }
 
-    else if (inputData.numberOfPassangers < 0 ) {
-        console.log('numberOfPassangers je zaporne');
-       // document.getElementById('display-result-value').innerHTML = 'Put number higher than 0'
-    }
 
     else {
         console.log('numberOfPassangers je OK');
-
-        calculate(getValues())
+        return true
     }
 };
 
