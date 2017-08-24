@@ -16,7 +16,8 @@ var getValues = function () {
         numberOfPassangers: Number(passengersElement.value),
         gasPrice: Number(gasPriceElement.value),
         averageConsumption: Number(consumptionElement.value),
-        totalDistance: Number(distanceElement.value)
+        totalDistance: Number(distanceElement.value),
+        wayBack: wayBackElement.checked
     }
 };
 
@@ -42,18 +43,15 @@ var validate = function (inputData) {
 var calculate = function (inputData) {
     console.log('calculate()');
 
-    var result = (((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption)
-        / inputData.numberOfPassangers);
-    console.log(result);
-    var wayBack = function () {
-        if (wayBackElement.checked) {
-            return result * 2
-        }
-        else {
-            return result
-        }
-    };
-    resultElement.innerHTML = 'Everybody will pay ' + Math.round(wayBack() * 100) / 100 + ' CZK.'
+    var result = ((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption)
+        / inputData.numberOfPassangers;
+
+    if (inputData.wayBack) {
+      return result * 2
+    }
+    else {
+      return result
+    }
 };
 
 
@@ -66,7 +64,10 @@ var finalRun = function () {
     if (validate(inputData)) {
         console.log('splnena podminka true - calculate');
 
-        calculate(inputData);
+        var result = calculate(inputData);
+        var roundedResult = result.toFixed(2);
+
+        resultElement.innerHTML = 'Everybody will pay ' + roundedResult + ' CZK.'
     }
     else {
         alert('You have to put number higher than 0');
@@ -99,12 +100,3 @@ for (var index = 0; index < inputsAllElement.length; ++index) {
         // console.log('event: ', event);
     });
 }
-
-
-//wayBack input on click
-wayBackElement.addEventListener('click', function () {
-    console.log('wayBackElement click');
-
-    finalRun()
-});
-
