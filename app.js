@@ -8,15 +8,18 @@ var resultElement = document.getElementById('display-result-value');
 var buttonElement = document.getElementById('button-click');
 var inputsAllElement = document.getElementsByClassName('inputs-field');
 
+
+
 //take value and accept only numbers
 var getValues = function () {
     console.log('getValues()');
 
     return {
-        numberOfPassangers: Number(passengersElement.value),
+        numberOfPassengers: Number(passengersElement.value),
         gasPrice: Number(gasPriceElement.value),
         averageConsumption: Number(consumptionElement.value),
-        totalDistance: Number(distanceElement.value)
+        totalDistance: Number(distanceElement.value),
+        wayBack: wayBackElement.checked
     }
 };
 
@@ -26,14 +29,14 @@ var validate = function (inputData) {
 
     // console.log(inputData);
 
-    if (inputData.numberOfPassangers <= 0 || inputData.gasPrice <= 0 || inputData.averageConsumption <= 0
+    if (inputData.numberOfPassengers <= 0 || inputData.gasPrice <= 0 || inputData.averageConsumption <= 0
         || inputData.totalDistance <= 0) {
         console.log('cislo je nula nebo nizsi');
         return false
     }
 
     else {
-        console.log('numberOfPassangers je OK');
+        console.log('numberOfPassengers je OK');
         return true
     }
 };
@@ -43,18 +46,18 @@ var calculate = function (inputData) {
     console.log('calculate()');
 
     var result = (((inputData.totalDistance / 100) * inputData.gasPrice * inputData.averageConsumption)
-        / inputData.numberOfPassangers);
-    console.log(result);
-    var wayBack = function () {
-        if (wayBackElement.checked) {
+        / inputData.numberOfPassengers);
+
+        if (inputData.wayBack) {
             return result * 2
         }
         else {
             return result
         }
     };
-    resultElement.innerHTML = 'Everybody will pay ' + Math.round(wayBack() * 100) / 100 + ' CZK.'
-};
+    //resultElement.innerHTML = 'Everybody will pay ' + Math.round(wayBack() * 100) / 100 + ' CZK.'
+
+
 
 
 //finalRun decides between calculate (true) or alert (false)
@@ -66,7 +69,10 @@ var finalRun = function () {
     if (validate(inputData)) {
         console.log('splnena podminka true - calculate');
 
-        calculate(inputData);
+        var result = calculate(inputData);
+
+
+        resultElement.innerHTML = 'Everybody will pay ' + result + ' CZK.';
     }
     else {
         alert('You have to put number higher than 0');
@@ -99,12 +105,4 @@ for (var index = 0; index < inputsAllElement.length; ++index) {
         // console.log('event: ', event);
     });
 }
-
-
-//wayBack input on click
-wayBackElement.addEventListener('click', function () {
-    console.log('wayBackElement click');
-
-    finalRun()
-});
 
