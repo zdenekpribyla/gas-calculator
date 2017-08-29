@@ -70,9 +70,10 @@ var finalRun = function () {
         console.log('splnena podminka true - calculate');
 
         var result = calculate(inputData);
+        var roundedResult = result.toFixed(2);
 
 
-        resultElement.innerHTML = 'Everybody will pay ' + result + ' CZK.';
+        resultElement.innerHTML = 'Everybody will pay ' + roundedResult + ' CZK.';
     }
     else {
         alert('You have to put number higher than 0');
